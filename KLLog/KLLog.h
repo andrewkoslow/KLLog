@@ -117,7 +117,7 @@
 #define ____KLLogExprByType(v, t, e1, e2) __builtin_choose_expr(__builtin_types_compatible_p(__typeof(v), t), e1, e2)
 #define ____KLLogExprByTypeEval(...) ____KLLogExprByType(__VA_ARGS__)
 
-#define ____KLLogValByType(v, t, d) __builtin_choose_expr(__builtin_types_compatible_p(__typeof(v), t), v, (t)d)
+#define ____KLLogValByType(v, t, d) __builtin_choose_expr(__builtin_types_compatible_p(__typeof(v), t), (__typeof(v))v, (t)d)
 #define ____KLLogValByTypeEval(...) ____KLLogValByType(__VA_ARGS__)
 
 #define ____KLLogString(...) [NSString stringWithFormat:__VA_ARGS__]
