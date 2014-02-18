@@ -135,8 +135,6 @@ ____KLLogStringByTypeEval(v, CGPoint,                   %@,   NSStringFromCGPoin
 ____KLLogStringByTypeEval(v, CGRect,                    %@,   NSStringFromCGRect,         CGRectZero,\
 ____KLLogStringByTypeEval(v, NSRange,                   %@,   NSStringFromRange,          NSMakeRange(0, 0),\
 ____KLLogStringByTypeEval(v, UIEdgeInsets,              %@,   NSStringFromUIEdgeInsets,   UIEdgeInsetsZero,\
-____KLLogStringByTypeEval(v, NSUInteger,                %lu,  ,                           0,\
-____KLLogStringByTypeEval(v, NSInteger,                 %ld,  ,                           0,\
 ____KLLogStringByTypeEval(v, CFIndex,                   %ld,  ,                           0,\
 ____KLLogStringByTypeEval(v, CGFloat,                   %f,   ,                           0,\
 ____KLLogStringByTypeEval(v, signed short int,          %hd,  ,                           0,\
@@ -156,5 +154,5 @@ ____KLLogStringByTypeEval(v, float,                     %f,   ,                 
 ____KLLogStringByTypeEval(v, double,                    %f,   ,                           0,\
 ____KLLogStringByTypeEval(v, long double,               %Lf,  ,                           0,\
 ____KLLogStringByTypeEval(v, void *,                    %p,   ,                           NULL,\
-(____KLLogString(@"%s %@", #v, @"<Unknown Type>"))))))))))))))))))))))))))))))
+(____KLLogString(@"%s %@", #v, @"<Unknown Type>"))))))))))))))))))))))))))))
 
