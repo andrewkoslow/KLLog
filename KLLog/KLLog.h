@@ -111,22 +111,34 @@ ____KLLog(____level, ([[NSArray arrayWithObjects:____KLLogPair ## ARG_COUNT(__VA
 @"<Debug>")))))))
 
 
-#define ____KLLogArgCount(...) ____KLLogArgCountImpl(__VA_ARGS__, 8, 7, 6, 5, 4, 3, 2, 1)
-#define ____KLLogArgCountImpl(_1,_2,_3,_4,_5,_6,_7,_8,N,...) N
+#define ____KLLogArgCount(...) ____KLLogArgCountImpl(__VA_ARGS__, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+#define ____KLLogArgCountImpl(_1,_2,_3,_4,_5,_6,_7,_8,_9,_10,_11,_12,_13,_14,_15,_16,N,...) N
 
-#define ____KLLogVal8(v, ...) ____KLLogVal(v), ____KLLogVal7(__VA_ARGS__)
-#define ____KLLogVal7(v, ...) ____KLLogVal(v), ____KLLogVal6(__VA_ARGS__)
-#define ____KLLogVal6(v, ...) ____KLLogVal(v), ____KLLogVal5(__VA_ARGS__)
-#define ____KLLogVal5(v, ...) ____KLLogVal(v), ____KLLogVal4(__VA_ARGS__)
-#define ____KLLogVal4(v, ...) ____KLLogVal(v), ____KLLogVal3(__VA_ARGS__)
-#define ____KLLogVal3(v, ...) ____KLLogVal(v), ____KLLogVal2(__VA_ARGS__)
-#define ____KLLogVal2(v, ...) ____KLLogVal(v), ____KLLogVal1(__VA_ARGS__)
-#define ____KLLogVal1(v) ____KLLogVal(v)
+#define ____KLLogVal16(v, ...)      ____KLLogVal(#v " ", v), ____KLLogVal15(__VA_ARGS__)
+#define ____KLLogVal15(v, ...)      ____KLLogVal(#v " ", v), ____KLLogVal14(__VA_ARGS__)
+#define ____KLLogVal14(v, ...)      ____KLLogVal(#v " ", v), ____KLLogVal13(__VA_ARGS__)
+#define ____KLLogVal13(v, ...)      ____KLLogVal(#v " ", v), ____KLLogVal12(__VA_ARGS__)
+#define ____KLLogVal12(v, ...)      ____KLLogVal(#v " ", v), ____KLLogVal11(__VA_ARGS__)
+#define ____KLLogVal11(v, ...)      ____KLLogVal(#v " ", v), ____KLLogVal10(__VA_ARGS__)
+#define ____KLLogVal10(v, ...)      ____KLLogVal(#v " ", v), ____KLLogVal9(__VA_ARGS__)
+#define ____KLLogVal9(v, ...)       ____KLLogVal(#v " ", v), ____KLLogVal8(__VA_ARGS__)
+#define ____KLLogVal8(v, ...)       ____KLLogVal(#v " ", v), ____KLLogVal7(__VA_ARGS__)
+#define ____KLLogVal7(v, ...)       ____KLLogVal(#v " ", v), ____KLLogVal6(__VA_ARGS__)
+#define ____KLLogVal6(v, ...)       ____KLLogVal(#v " ", v), ____KLLogVal5(__VA_ARGS__)
+#define ____KLLogVal5(v, ...)       ____KLLogVal(#v " ", v), ____KLLogVal4(__VA_ARGS__)
+#define ____KLLogVal4(v, ...)       ____KLLogVal(#v " ", v), ____KLLogVal3(__VA_ARGS__)
+#define ____KLLogVal3(v, ...)       ____KLLogVal(#v " ", v), ____KLLogVal2(__VA_ARGS__)
+#define ____KLLogVal2(v, ...)       ____KLLogVal(#v " ", v), ____KLLogVal1(__VA_ARGS__)
+#define ____KLLogVal1(v)            ____KLLogVal(#v " ", v)
 
-#define ____KLLogPair8(m, v, ...) ____KLLogPair2(m, v), ____KLLogPair6(__VA_ARGS__)
-#define ____KLLogPair6(m, v, ...) ____KLLogPair2(m, v), ____KLLogPair4(__VA_ARGS__)
-#define ____KLLogPair4(m, v, ...) ____KLLogPair2(m, v), ____KLLogPair2(__VA_ARGS__)
-#define ____KLLogPair2(m, v) m, ____KLLogVal(v)
+#define ____KLLogPair16(m, v, ...)  ____KLLogPair2(m, v), ____KLLogPair14(__VA_ARGS__)
+#define ____KLLogPair14(m, v, ...)  ____KLLogPair2(m, v), ____KLLogPair12(__VA_ARGS__)
+#define ____KLLogPair12(m, v, ...)  ____KLLogPair2(m, v), ____KLLogPair10(__VA_ARGS__)
+#define ____KLLogPair10(m, v, ...)  ____KLLogPair2(m, v), ____KLLogPair8(__VA_ARGS__)
+#define ____KLLogPair8(m, v, ...)   ____KLLogPair2(m, v), ____KLLogPair6(__VA_ARGS__)
+#define ____KLLogPair6(m, v, ...)   ____KLLogPair2(m, v), ____KLLogPair4(__VA_ARGS__)
+#define ____KLLogPair4(m, v, ...)   ____KLLogPair2(m, v), ____KLLogPair2(__VA_ARGS__)
+#define ____KLLogPair2(m, v) m,     ____KLLogVal(, v)
 
 #define ____KLLogExprByType(v, t, e1, e2) __builtin_choose_expr(__builtin_types_compatible_p(__typeof(v), t), e1, e2)
 #define ____KLLogExprByTypeEval(...) ____KLLogExprByType(__VA_ARGS__)
@@ -136,37 +148,37 @@ ____KLLog(____level, ([[NSArray arrayWithObjects:____KLLogPair ## ARG_COUNT(__VA
 
 #define ____KLLogString(...) [NSString stringWithFormat:__VA_ARGS__]
 
-#define ____KLLogStringByType(v, t, f, x1, d, n) ____KLLogExprByTypeEval(v, t, (____KLLogString(@"%s " # f, #v, x1 (____KLLogValByTypeEval(v, t, d)))), n)
+#define ____KLLogStringByType(n, v, t, f2, x1, d, x2) ____KLLogExprByTypeEval(v, t, (____KLLogString(@ n #f2, x1 (____KLLogValByTypeEval(v, t, d)))), x2)
 #define ____KLLogStringByTypeEval(...) ____KLLogStringByType(__VA_ARGS__)
 
 #define ____KLLogNSStringFromBOOL(b) (b ? @"YES" : @"NO")
 
-#define ____KLLogVal(v)\
-____KLLogStringByTypeEval(v, id,                        %@,   ,                           nil,\
-____KLLogStringByTypeEval(v, SEL,                       %@,   NSStringFromSelector,       nil,\
-____KLLogStringByTypeEval(v, CGSize,                    %@,   NSStringFromCGSize,         CGSizeZero,\
-____KLLogStringByTypeEval(v, CGPoint,                   %@,   NSStringFromCGPoint,        CGPointZero,\
-____KLLogStringByTypeEval(v, CGRect,                    %@,   NSStringFromCGRect,         CGRectZero,\
-____KLLogStringByTypeEval(v, NSRange,                   %@,   NSStringFromRange,          NSMakeRange(0, 0),\
-____KLLogStringByTypeEval(v, UIEdgeInsets,              %@,   NSStringFromUIEdgeInsets,   UIEdgeInsetsZero,\
-____KLLogStringByTypeEval(v, CFIndex,                   %ld,  ,                           0,\
-____KLLogStringByTypeEval(v, CGFloat,                   %f,   ,                           0,\
-____KLLogStringByTypeEval(v, signed short int,          %hd,  ,                           0,\
-____KLLogStringByTypeEval(v, unsigned short int,        %hd,  ,                           0,\
-____KLLogStringByTypeEval(v, BOOL,                      %@,   ____KLLogNSStringFromBOOL,  NO,\
-____KLLogStringByTypeEval(v, char,                      %c,   ,                           0,\
-____KLLogStringByTypeEval(v, signed char,               %c,   ,                           0,\
-____KLLogStringByTypeEval(v, unsigned char,             %c,   ,                           0,\
-____KLLogStringByTypeEval(v, int,                       %d,   ,                           0,\
-____KLLogStringByTypeEval(v, uint,                      %u,   ,                           0,\
-____KLLogStringByTypeEval(v, unsigned int,              %u,   ,                           0,\
-____KLLogStringByTypeEval(v, long int,                  %ld,  ,                           0,\
-____KLLogStringByTypeEval(v, unsigned long int,         %lu,  ,                           0,\
-____KLLogStringByTypeEval(v, long long int,             %lld, ,                           0,\
-____KLLogStringByTypeEval(v, unsigned long long int,    %llu, ,                           0,\
-____KLLogStringByTypeEval(v, float,                     %f,   ,                           0,\
-____KLLogStringByTypeEval(v, double,                    %f,   ,                           0,\
-____KLLogStringByTypeEval(v, long double,               %Lf,  ,                           0,\
-____KLLogStringByTypeEval(v, void *,                    %p,   ,                           NULL,\
+#define ____KLLogVal(n, v)\
+____KLLogStringByTypeEval(n, v, id,                        %@,   ,                           nil,\
+____KLLogStringByTypeEval(n, v, SEL,                       %@,   NSStringFromSelector,       nil,\
+____KLLogStringByTypeEval(n, v, CGSize,                    %@,   NSStringFromCGSize,         CGSizeZero,\
+____KLLogStringByTypeEval(n, v, CGPoint,                   %@,   NSStringFromCGPoint,        CGPointZero,\
+____KLLogStringByTypeEval(n, v, CGRect,                    %@,   NSStringFromCGRect,         CGRectZero,\
+____KLLogStringByTypeEval(n, v, NSRange,                   %@,   NSStringFromRange,          NSMakeRange(0, 0),\
+____KLLogStringByTypeEval(n, v, UIEdgeInsets,              %@,   NSStringFromUIEdgeInsets,   UIEdgeInsetsZero,\
+____KLLogStringByTypeEval(n, v, CFIndex,                   %ld,  ,                           0,\
+____KLLogStringByTypeEval(n, v, CGFloat,                   %f,   ,                           0,\
+____KLLogStringByTypeEval(n, v, signed short int,          %hd,  ,                           0,\
+____KLLogStringByTypeEval(n, v, unsigned short int,        %hd,  ,                           0,\
+____KLLogStringByTypeEval(n, v, BOOL,                      %@,   ____KLLogNSStringFromBOOL,  NO,\
+____KLLogStringByTypeEval(n, v, char,                      %c,   ,                           0,\
+____KLLogStringByTypeEval(n, v, signed char,               %c,   ,                           0,\
+____KLLogStringByTypeEval(n, v, unsigned char,             %c,   ,                           0,\
+____KLLogStringByTypeEval(n, v, int,                       %d,   ,                           0,\
+____KLLogStringByTypeEval(n, v, uint,                      %u,   ,                           0,\
+____KLLogStringByTypeEval(n, v, unsigned int,              %u,   ,                           0,\
+____KLLogStringByTypeEval(n, v, long int,                  %ld,  ,                           0,\
+____KLLogStringByTypeEval(n, v, unsigned long int,         %lu,  ,                           0,\
+____KLLogStringByTypeEval(n, v, long long int,             %lld, ,                           0,\
+____KLLogStringByTypeEval(n, v, unsigned long long int,    %llu, ,                           0,\
+____KLLogStringByTypeEval(n, v, float,                     %f,   ,                           0,\
+____KLLogStringByTypeEval(n, v, double,                    %f,   ,                           0,\
+____KLLogStringByTypeEval(n, v, long double,               %Lf,  ,                           0,\
+____KLLogStringByTypeEval(n, v, void *,                    %p,   ,                           NULL,\
 (____KLLogString(@"%s %@", #v, @"<Unknown Type>"))))))))))))))))))))))))))))
 
