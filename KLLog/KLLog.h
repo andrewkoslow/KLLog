@@ -140,6 +140,15 @@ ____KLLog(____level, ([[NSArray arrayWithObjects:____KLLogPair ## ARG_COUNT(__VA
 #define ____KLLogPair4(m, v, ...)   ____KLLogPair2(m, v), ____KLLogPair2(__VA_ARGS__)
 #define ____KLLogPair2(m, v) m,     ____KLLogVal(, v)
 
+#define ____KLLogPair15(m, v, ...)  ____KLLogPair2(m, v), ____KLLogPair13(__VA_ARGS__)
+#define ____KLLogPair13(m, v, ...)  ____KLLogPair2(m, v), ____KLLogPair11(__VA_ARGS__)
+#define ____KLLogPair11(m, v, ...)  ____KLLogPair2(m, v), ____KLLogPair9(__VA_ARGS__)
+#define ____KLLogPair9(m, v, ...)   ____KLLogPair2(m, v), ____KLLogPair7(__VA_ARGS__)
+#define ____KLLogPair7(m, v, ...)   ____KLLogPair2(m, v), ____KLLogPair5(__VA_ARGS__)
+#define ____KLLogPair5(m, v, ...)   ____KLLogPair2(m, v), ____KLLogPair3(__VA_ARGS__)
+#define ____KLLogPair3(m, v, ...)   ____KLLogPair2(m, v), ____KLLogPair1(__VA_ARGS__)
+#define ____KLLogPair1(m) m
+
 #define ____KLLogExprByType(v, t, e1, e2) __builtin_choose_expr(__builtin_types_compatible_p(__typeof(v), t), e1, e2)
 #define ____KLLogExprByTypeEval(...) ____KLLogExprByType(__VA_ARGS__)
 
