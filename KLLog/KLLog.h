@@ -164,7 +164,7 @@ ____KLLog(____level, ([[NSArray arrayWithObjects:____KLLogPair ## ARG_COUNT(__VA
 
 #define ____KLLogVal(n, v)\
 ____KLLogStringByTypeEval(n, v, id,                        %@,   ,                           nil,\
-____KLLogStringByTypeEval(n, v, SEL,                       %@,   NSStringFromSelector,       nil,\
+____KLLogStringByTypeEval(n, v, SEL,                       %@,   NSStringFromSelector,       NSSelectorFromString(@""),\
 ____KLLogStringByTypeEval(n, v, CGSize,                    %@,   NSStringFromCGSize,         CGSizeZero,\
 ____KLLogStringByTypeEval(n, v, CGPoint,                   %@,   NSStringFromCGPoint,        CGPointZero,\
 ____KLLogStringByTypeEval(n, v, CGRect,                    %@,   NSStringFromCGRect,         CGRectZero,\
